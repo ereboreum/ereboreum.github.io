@@ -708,39 +708,45 @@
 
   
   <script>
+
   document.getElementById('downloadPDF').addEventListener('click', function() {
       const element = document.getElementById('crypto-widget-container');
+      
+      // First clone the element and modify its styles for PDF
+      const elementToConvert = element.cloneNode(true);
+      elementToConvert.style.width = '100%';
+      elementToConvert.style.maxWidth = 'none';
+      
       const opt = {
-          margin:       0.5,
-          filename:     'crypto-prices.pdf',
-          image:        { type: 'jpeg', quality: 1 },
-          html2canvas:  { 
-              scale: 2,
+          margin: 0.3,  // reduced margins
+          filename: 'crypto-prices.pdf',
+          image: { type: 'jpeg', quality: 1 },
+          html2canvas: { 
+              scale: 1.5,  // reduced scale
+              width: 1200, // force width
+              windowWidth: 1200,
               letterRendering: true,
               useCORS: true
           },
-          jsPDF:        { 
+          jsPDF: { 
               unit: 'in', 
               format: 'a4', 
-              orientation: 'landscape'  // Changed to landscape
+              orientation: 'landscape',
+              compress: true
           },
-          pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] }
+          pagebreak: { mode: 'avoid-all' }
       };
 
-      html2pdf()
-          .from(element)
-          .set(opt)
-          .toPdf()
-          .get('pdf')
-          .then(function(pdf) {
-              const totalPages = pdf.internal.getNumberOfPages();
-              for (let i = 1; i <= totalPages; i++) {
-                  pdf.setPage(i);
-                  pdf.setFontSize(10);
-                  pdf.text(`Page ${i} of ${totalPages}`, pdf.internal.pageSize.getWidth() - 1, pdf.internal.pageSize.getHeight() - 0.5);
-              }
-          })
-          .save();
+      // Create temporary container
+      const tempDiv = document.createElement('div');
+      tempDiv.appendChild(elementToConvert);
+      document.body.appendChild(tempDiv);
+
+      html2pdf().from(elementToConvert).set(opt).save()
+          .then(() => {
+              // Clean up
+              document.body.removeChild(tempDiv);
+          });
   });
 
   function colorOldDates() {
