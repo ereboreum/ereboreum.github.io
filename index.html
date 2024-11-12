@@ -116,7 +116,7 @@
       }
     }
 
-  /* Add print-specific CSS */
+  /* Add print-specific CSS
   @media print {
     body * {
         visibility: hidden;
@@ -131,8 +131,50 @@
     }
     #downloadPDF {
         display: none;
+    }
+  }  */
+
+  @media print {
+    /* Hide everything by default */
+    body * {
+        visibility: hidden;
+    }
+    
+    /* Show only our container and its contents */
+    #crypto-widget-container, 
+    #crypto-widget-container * {
+        visibility: visible;
+    }
+    
+    /* Position container at the top */
+    #crypto-widget-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    
+    /* Hide the print button */
+    #downloadPDF {
+        display: none;
+    }
+
+    /* Remove URLs and link references */
+    @page {
+        size: landscape;
+        margin: 0.5cm;
+    }
+
+    /* Remove link URLs */
+    a[href]:after {
+        content: none !important;
+    }
+
+    /* Remove image sources */
+    img[src]:after {
+        content: none !important;
+    }
   }
-}
   </style>
 </head>
 <body>
