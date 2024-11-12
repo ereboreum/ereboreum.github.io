@@ -709,45 +709,40 @@
   
   <script>
 
+
   document.getElementById('downloadPDF').addEventListener('click', function() {
       const element = document.getElementById('crypto-widget-container');
       
-      // First clone the element and modify its styles for PDF
-      const elementToConvert = element.cloneNode(true);
-      elementToConvert.style.width = '100%';
-      elementToConvert.style.maxWidth = 'none';
-      
       const opt = {
-          margin: 0.3,  // reduced margins
+          margin: 0.2,
           filename: 'crypto-prices.pdf',
           image: { type: 'jpeg', quality: 1 },
           html2canvas: { 
-              scale: 3,  // reduced scale
-              width: 1200, // force width
-              windowWidth: 1200,
-              letterRendering: true,
-              useCORS: true
+              scale: 2,
+              useCORS: true,
+              logging: true,
+              scrollX: 0,
+              scrollY: 0,
+              width: element.offsetWidth,  // Use actual element width
+              height: element.offsetHeight // Use actual element height
           },
           jsPDF: { 
               unit: 'in', 
-              format: 'a4', 
+              format: [element.offsetWidth * 0.0104166667, element.offsetHeight * 0.0104166667], // convert px to inches
               orientation: 'landscape',
-              compress: true
-          },
-          pagebreak: { mode: 'avoid-all' }
+              hotfixes: ["px_scaling"]
+          }
       };
 
-      // Create temporary container
-      const tempDiv = document.createElement('div');
-      tempDiv.appendChild(elementToConvert);
-      document.body.appendChild(tempDiv);
-
-      html2pdf().from(elementToConvert).set(opt).save()
-          .then(() => {
-              // Clean up
-              document.body.removeChild(tempDiv);
-          });
+      html2pdf()
+          .from(element)
+          .set(opt)
+          .save();
   });
+
+
+
+
 
   function colorOldDates() {
       // Get all elements with buy-date class
