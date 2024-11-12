@@ -708,19 +708,28 @@
 
   
   <script>
-  document.getElementById('downloadPDF').addEventListener('click', function() {
+    
+    document.getElementById('downloadPDF').addEventListener('click', function() {
       const element = document.getElementById('crypto-widget-container');
       const opt = {
-          margin:       1,
+          margin:       0.5, // Adjust margin to reduce excess spacing
           filename:     'crypto-prices.pdf',
           image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2 },
+          html2canvas:  { scale: 1 }, // Scale down to fit the page width better
           jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
 
-      // New Promise-based usage:
+      // Apply responsive styles to the element to fit PDF
+      element.style.width = '100%';
+      element.style.maxWidth = '8.5in'; // Set to match letter-width in inches
+
       html2pdf().set(opt).from(element).save();
-  });
+    });
+
+
+
+
+
 
   function colorOldDates() {
       // Get all elements with buy-date class
