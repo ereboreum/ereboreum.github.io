@@ -6,8 +6,13 @@
   <title>Crypto Price Blocks</title>
   <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
 
-  <!-- Add the html2pdf library in your head section -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- html2pdf CDN link -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+  </script>
 
   <style>
     #crypto-widget-container {
@@ -121,7 +126,7 @@
   <div id="crypto-widget-container">
 
     <!-- Add this button where you want it to appear -->
-    <button id="downloadPDF" class="pdf-button">Download PDF</button>
+    <button id="download-button">Download as PDF</button>
 
     <div id="crypto-widget-title">Main Portfolio</div>
     
@@ -710,22 +715,16 @@
   
   <script>
     
-    document.getElementById('downloadPDF').addEventListener('click', function() {
-      const element = document.getElementById('crypto-widget-container');
-      const opt = {
-          margin:       0.5, // Adjust margin to reduce excess spacing
-          filename:     'crypto-prices.pdf',
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 1 }, // Scale down to fit the page width better
-          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-      };
+    const button = document.getElementById('download-button');
 
-      // Apply responsive styles to the element to fit PDF
-      element.style.width = '100%';
-      element.style.maxWidth = '8.5in'; // Set to match letter-width in inches
+    function generatePDF() {
+      // Choose the element that your content will be rendered to.
+      const element = document.getElementById('invoice');
+      // Choose the element and save the PDF for your user.
+      html2pdf().from(element).save();
+    }
 
-      html2pdf().set(opt).from(element).save();
-    });
+    button.addEventListener('click', generatePDF);
 
 
 
