@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Price Blocks</title>
   <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+
+  <!-- Add the html2pdf library in your head section -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <style>
     #crypto-widget-container {
       max-width: 1400px;
@@ -75,6 +79,24 @@
       color: #ff0000 !important; /* or red */
     }
 
+    /* Styling for the button */
+    .pdf-button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
+
     @media (max-width: 1200px) {
       .crypto-row {
         grid-template-columns: repeat(3, 1fr);
@@ -96,6 +118,10 @@
 </head>
 <body>
   <div id="crypto-widget-container">
+
+    <!-- Add this button where you want it to appear -->
+    <button id="downloadPDF" class="pdf-button">Download PDF</button>
+
     <div id="crypto-widget-title">Main Portfolio</div>
     
     <!-- First Row -->
@@ -682,6 +708,20 @@
 
   
   <script>
+  document.getElementById('downloadPDF').addEventListener('click', function() {
+      const element = document.getElementById('crypto-widget-container');
+      const opt = {
+          margin:       1,
+          filename:     'crypto-prices.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2 },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      // New Promise-based usage:
+      html2pdf().set(opt).from(element).save();
+  });
+
   function colorOldDates() {
       // Get all elements with buy-date class
       const buyDates = document.getElementsByClassName('buy-date');
@@ -706,6 +746,7 @@
 
   // Run after page loads
   window.addEventListener('load', colorOldDates);
+
   </script>
 
 </body>
