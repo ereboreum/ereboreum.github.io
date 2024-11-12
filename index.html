@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Price Blocks</title>
+  <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+  <style>
+    #crypto-widget-container {
+      max-width: 1400px;
+      width: 100%;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    #crypto-widget-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .widget-group {
+      margin-bottom: 30px;
+    }
+
+    .crypto-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .widget-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .target-price {
+      width: 100%;
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      margin-top: 10px;
+    }
+
+    .target-price p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .buy-date {
+      color: #666;
+      font-size: 12px !important;
+    }
+
+    /* Horizontal line styling */
+    .row-divider {
+      margin: 30px 0;
+      border: 0;
+      height: 2px;
+      background: #ddd;
+      background-image: linear-gradient(to right, #f7f7f7, #ddd, #f7f7f7);
+    }
+
+    /* Add this to your existing CSS */
+    .date-highlight {
+      color: #ff0000 !important; /* or red */
+    }
+
+    @media (max-width: 1200px) {
+      .crypto-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .crypto-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .crypto-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="crypto-widget-container">
+    <div id="crypto-widget-title">Main Portfolio</div>
+    
+    <!-- First Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- BTC -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="1" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 0</p>
+            <p>buy price: $100,000</p>
+            <p class="buy-date">Bought: 31 Dec 2024</p>
+            <p>target price: $100,000</p>
+            <p>wallet: exodus</p>
+          </div>
+        </div>
+
+        <!-- ETH -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="1027" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 0</p>
+            <p>buy price: $6,000</p>
+            <p class="buy-date">Bought: 31 Dec 2024</p>
+            <p>target price: $6,000</p>
+            <p>wallet: exodus</p>
+          </div>
+        </div>
+
+        <!-- ADA -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="2010" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 20,000</p>
+            <p>buy price: $0.36</p>
+            <p class="buy-date">Bought: 7 Jan 2024</p>
+            <p>target price: $5</p>
+            <p>wallet: exodus</p>
+          </div>
+        </div>
+
+        <!-- SUI -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="20947" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 10,400</p>
+            <p>buy price: $0.66</p>
+            <p class="buy-date">Bought: 6 Jul 2024</p>
+            <p>target price: $12</p>
+            <p>wallet: sui</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Second Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- KAS -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="20396" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 31,720</p>
+            <p>buy price: $0.128</p>
+            <p class="buy-date">Bought: 14 Dec 2023</p>
+            <p>target price: $1</p>
+            <p>wallet: kaspa</p>
+          </div>
+        </div>
+
+        <!-- SEI -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="23149" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 20,000</p>
+            <p>buy price: $0.28</p>
+            <p class="buy-date">Bought: 17 Aug 2024</p>
+            <p>target price: $5</p>
+            <p>wallet: compass</p>
+          </div>
+        </div>
+
+        <!-- ALGO -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="4030" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 100,000</p>
+            <p>buy price: $0.15</p>
+            <p class="buy-date">Bought: 16 Jul 2023</p>
+            <p>target price: $1</p>
+            <p>wallet: exodus</p>
+          </div>
+        </div>
+
+        <!-- APE -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="18876" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 12,000</p>
+            <p>buy price: $1.92</p>
+            <p class="buy-date">Bought: 19 Jun 2023</p>
+            <p>target price: $10</p>
+            <p>wallet: mygacc.eth</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Third Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- QNT -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="3155" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 283</p>
+            <p>buy price: $90</p>
+            <p class="buy-date">Bought: 6 Sep 2024</p>
+            <p>target price: $700</p>
+            <p>wallet: exodus</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <div id="crypto-widget-title">DeSci Portfolio</div>
+    
+    <!-- First Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- AXGT -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="29557" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 2,000,000</p>
+            <p>buy price: $0.0014</p>
+            <p class="buy-date">Bought: 2 Feb 2024</p>
+            <p>target price: $3</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+        <!-- NOBL -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="30701" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 1,000,000</p>
+            <p>buy price: $0.05</p>
+            <p class="buy-date">Bought: 26 Sep 2024</p>
+            <p>target price: $1</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+        <!-- VITA -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="19214" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 1,500</p>
+            <p>buy price: $3.47</p>
+            <p class="buy-date">Bought: 17 Dec 2023</p>
+            <p>target price: $10</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+        <!-- LAKE -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="23157" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 500,000</p>
+            <p>buy price: $0.015</p>
+            <p class="buy-date">Bought: 5 Jul 2024</p>
+            <p>target price: $0.10</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Second Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- CRYO -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="30965" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 800</p>
+            <p>buy price: $1.14</p>
+            <p class="buy-date">Bought: 13 Dec 2023</p>
+            <p>target price: $12</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+        <!-- GENE -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="15169" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 50,000</p>
+            <p>buy price: $0.024</p>
+            <p class="buy-date">Bought: 16 Dec 2023</p>
+            <p>target price: $0.10</p>
+            <p>wallet: spaul.base</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <div id="crypto-widget-title">Second Portfolio</div>
+
+    <!-- Fourth Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- LCX -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="4950" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 50,000</p>
+            <p>buy price: $0.07</p>
+            <p class="buy-date">Bought: 17 Dec 2023</p>
+            <p>target price: $1</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+        <!-- GALA -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="7080" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 100,000</p>
+            <p>buy price: $0.03</p>
+            <p class="buy-date">Bought: 28 Mar 2023</p>
+            <p>target price: $0.10</p>
+            <p>wallet: ereboreum.eth</p>
+          </div>
+        </div>
+
+        <!-- GFAL -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="23397" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 100,000</p>
+            <p>buy price: $0.01</p>
+            <p class="buy-date">Bought: 3 Jun 2023</p>
+            <p>target price: $0.10</p>
+            <p>wallet: mygacc.bnb</p>
+          </div>
+        </div>
+
+        <!-- XDC -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="2634" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 100,000</p>
+            <p>buy price: $0.043</p>
+            <p class="buy-date">Bought: 15 Sep 2023</p>
+            <p>target price: $0.30</p>
+            <p>wallet: xinfin</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Fifth Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- ARB -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="11841" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 4,000</p>
+            <p>buy price: $1.28</p>
+            <p class="buy-date">Bought: 5 Jul 2024</p>
+            <p>target price: $3</p>
+            <p>wallet: spaul.arb</p>
+          </div>
+        </div>
+
+        <!-- HBAR -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="4642" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 100,000</p>
+            <p>buy price: $0.063</p>
+            <p class="buy-date">Bought: 18 Apr 2023</p>
+            <p>target price: $0.50</p>
+            <p>wallet: exodus</p>
+          </div>
+        </div>
+
+        <!-- XCH -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="9258" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 108</p>
+            <p>buy price: $300</p>
+            <p class="buy-date">Bought: 1 Jan 2024</p>
+            <p>target price: $300</p>
+            <p>wallet: goby</p>
+          </div>
+        </div>
+
+        <!-- VRA -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="3816" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 388,150</p>
+            <p>buy price: $0.007</p>
+            <p class="buy-date">Bought: 17 Dec 2023</p>
+            <p>target price: $0.15</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Sixth Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- RIO -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="4166" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 5,090</p>
+            <p>buy price: $0.59</p>
+            <p class="buy-date">Bought: 19 Dec 2023</p>
+            <p>target price: $6</p>
+            <p>wallet: pero-algo</p>
+          </div>
+        </div>
+
+        <!-- SIDUS -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="15463" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 1,000,000</p>
+            <p>buy price: $0.0015</p>
+            <p class="buy-date">Bought: 12 May 2023</p>
+            <p>target price: $0.03</p>
+            <p>wallet: trust</p>
+          </div>
+        </div>
+
+        <!-- CSIX -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="23546" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 200,000</p>
+            <p>buy price: $0.06</p>
+            <p class="buy-date">Bought: 6 May 2024</p>
+            <p>target price: $1</p>
+            <p>wallet: mygacc.bnb</p>
+          </div>
+        </div>
+
+        <!-- XYO -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="2765" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 500,000</p>
+            <p>buy price: $0.0037</p>
+            <p class="buy-date">Bought: 16 Jul 2023</p>
+            <p>target price: $0.10</p>
+            <p>wallet: trust</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Seventh Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- CGPT -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="23756" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 23,700</p>
+            <p>buy price: $0.126</p>
+            <p class="buy-date">Bought: 19 Dec 2023</p>
+            <p>target price: $1</p>
+            <p>wallet: mygacc.bnb</p>
+          </div>
+        </div>
+
+        <!-- MYRIA -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="15463" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 500,000</p>
+            <p>buy price: $0.0024</p>
+            <p class="buy-date">Bought: 3 Jun 2023</p>
+            <p>target price: $0.05</p>
+            <p>wallet: ereboreum.eth</p>
+          </div>
+        </div>
+
+        <!-- BLOK -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="11206" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 1,000,000</p>
+            <p>buy price: $0.0022</p>
+            <p class="buy-date">Bought: 12 May 2023</p>
+            <p>target price: $0.05</p>
+            <p>wallet: trust</p>
+          </div>
+        </div>
+
+        <!-- DBC -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="2316" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 822,134</p>
+            <p>buy price: $0.0065</p>
+            <p class="buy-date">Bought: 10 Mar 2024</p>
+            <p>target price: $0.10</p>
+            <p>wallet: dbcwallet.io</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Eigth Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- NXRA -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="23825" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 50,210</p>
+            <p>buy price: $0.127</p>
+            <p class="buy-date">Bought: 27 Jan 2024</p>
+            <p>target price: $1</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+        <!-- RISE -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="15257" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 20,000,000</p>
+            <p>buy price: $0.00015</p>
+            <p class="buy-date">Bought: 14 Mar 2023</p>
+            <p>target price: $0.003</p>
+            <p>wallet: oldledger.bnb</p>
+          </div>
+        </div>
+
+        <!-- DNX -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="22858" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 4,892</p>
+            <p>buy price: $0.72</p>
+            <p class="buy-date">Bought: 18 Dec 2023</p>
+            <p>target price: $5</p>
+            <p>wallet: dynexcoin.org</p>
+          </div>
+        </div>
+
+        <!-- CXT -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="32526" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 20,000</p>
+            <p>buy price: $0.1775</p>
+            <p class="buy-date">Bought: 10 Jul 2024</p>
+            <p>target price: $7</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Horizontal line -->
+    <hr class="row-divider">
+
+    <!-- Ninth Row -->
+    <div class="widget-group">
+      <div class="crypto-row">
+
+        <!-- DOP -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="31456" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 350,000</p>
+            <p>buy price: $0.0062</p>
+            <p class="buy-date">Bought: 28 Jul 2024</p>
+            <p>target price: $0.10</p>
+            <p>wallet: hsahni.eth</p>
+          </div>
+        </div>
+
+        <!-- QANX -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="5858" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 100,000</p>
+            <p>buy price: $0.09</p>
+            <p class="buy-date">Bought: 4 Apr 2024</p>
+            <p>target price: $3</p>
+            <p>wallet: newledger.eth</p>
+          </div>
+        </div>
+
+        <!-- KAI -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="5453" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 124,000</p>
+            <p>buy price: $0.02</p>
+            <p class="buy-date">Bought: 23 Dec 2020</p>
+            <p>target price: $0.01</p>
+            <p>wallet: kardiachain</p>
+          </div>
+        </div>
+
+        <!-- FEG -->
+        <div class="widget-container">
+          <div class="coinmarketcap-currency-widget" data-currencyid="32526" data-base="USD" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="false" data-statsticker="false" data-stats="USD"></div>
+          <div class="target-price">
+            <p>amount: 5,300,000</p>
+            <p>buy price: $0.0002</p>
+            <p class="buy-date">Bought: 1 Jan 2021</p>
+            <p>target price: $0.002</p>
+            <p>wallet: mygacc.bnb</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  
+  <script>
+  function colorOldDates() {
+      // Get all elements with buy-date class
+      const buyDates = document.getElementsByClassName('buy-date');
+      
+      // Current date
+      const currentDate = new Date();
+      const oneYearAgo = new Date();
+      oneYearAgo.setFullYear(currentDate.getFullYear() - 1);
+      
+      // Check each date
+      Array.from(buyDates).forEach(element => {
+          // Extract date from text (assuming format: "Bought: DD MMM YYYY")
+          const dateStr = element.textContent.split(': ')[1];
+          const date = new Date(dateStr);
+          
+          // Add highlight class if date is older than 1 year
+          if (date > oneYearAgo) {
+              element.classList.add('date-highlight');
+          }
+      });
+  }
+
+  // Run after page loads
+  window.addEventListener('load', colorOldDates);
+  </script>
+
+</body>
+</html>
